@@ -12,7 +12,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] protected float _speed;
     protected bool _forward = true;
     [SerializeField] protected float _pauseTime = 1f;
-    [SerializeField] protected float _startPauseTime = 0.5f;
+    [SerializeField] protected float _startPauseTime = float.MinValue;
 
     void Update()
     {
