@@ -6,8 +6,19 @@ using UnityEngine.AI;
 public class AreaMovementModifier : MonoBehaviour
 {
     [SerializeField] NavMeshAgent _agent;
-    [SerializeField] float _speed;
-    [SerializeField] float _grassSpeed;
+    [SerializeField] float _speed = 10f;
+    [SerializeField] float _grassSpeed = 5f;
+
+    [System.Flags]
+    public enum myFlags
+    {
+        Player = 0,
+        AI = 1,
+        Objects = 2,
+        Etc = 4,
+        Everything = 0b1111
+    }
+    public myFlags flags;
 
     private void Start()
     {
