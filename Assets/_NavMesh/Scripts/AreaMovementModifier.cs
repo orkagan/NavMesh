@@ -43,6 +43,6 @@ public class AreaMovementModifier : MonoBehaviour
             _agent.speed = _grassSpeed;
         }
 
-        Debug.Log(hit.mask);
+        Debug.Log($"Hit mask value: {hit.mask}");
     }
 }

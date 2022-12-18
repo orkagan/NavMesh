@@ -2,27 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public abstract class Collectable : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public string collectorName;
+    protected abstract void CollectableTrigger(GameObject collector);
+    protected void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
-        WaypointMove wpMove = other.GetComponent<WaypointMove>();
-        if (wpMove != null && other.tag == "Agent")
+        Debug.Log($"{name} collected");
+        if (other.name == collectorName)
         {
-            wpMove.nextPosition();
-            Destroy(this.gameObject);
+            CollectableTrigger(other.gameObject);
         }
     }
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Hit");
-        WaypointMove wpMove = collision.gameObject.GetComponent<WaypointMove>();
-        if (wpMove != null && collision.gameObject.tag == "Agent")
-        {
-            wpMove.nextPosition();
-            Debug.Log("nextPosition");
-            Destroy(this.gameObject);
-        }
-    }*/
 }
